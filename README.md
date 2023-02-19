@@ -4,7 +4,7 @@
 
 ## Description
 
-Sesami backend interview assignment
+The interview assignment for the Sesami backend role uses Typescript as the programming language, Nestjs as the web framework, and Sqlite3 for the database.
 
 ## Installation
 
