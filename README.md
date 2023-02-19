@@ -25,6 +25,8 @@ $ yarn run start:dev
 $ yarn run start:prod
 ```
 
+after run can see api on `localhost:3000` and swagger api documents on `localhost:3000/api` address.
+
 ## Test
 
 ```bash
