@@ -25,7 +25,7 @@ $ yarn run start:dev
 $ yarn run start:prod
 ```
 
-after run can see api on `localhost:3000` and swagger api documents on `localhost:3000/api` address.
+Once the application has been run, you will be able to view the API on `localhost:3000/api` and the swagger API documents on `localhost:3000/api/docs`.
 
 ## Test
 
