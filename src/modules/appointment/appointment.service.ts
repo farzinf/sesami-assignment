@@ -95,4 +95,23 @@ export class AppointmentService {
     return true;
   }
 
+  /**
+   * find appointment by time
+   *
+   * @param date
+   * @returns
+   */
+  async findByTime(date: Date): Promise<Appointment> {
+    const newDate = new Date(date || Date.now());
+    return this.appointmentRepository.findOne({
+      where: {
+        start: MoreThanOrEqual(newDate),
+        end: LessThanOrEqual(newDate),
+      },
+    });
+  }
+
+  findAll() {
+    return this.appointmentRepository.find();
+  }
 }
