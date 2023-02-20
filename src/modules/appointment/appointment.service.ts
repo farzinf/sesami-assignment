@@ -65,4 +65,34 @@ export class AppointmentService {
 
     return appointment[0];
   }
+
+  async create(data: AppointmentInterface): Promise<boolean> {
+    const appointment = await this.isTimeFree(data.start, data.end);
+
+    // TODO: check start time and end time must be after current time
+    // Time conflict with existing appointment
+    if (appointment && (!data.id || data.id != appointment.id)) {
+      throw new BadRequestException(
+        `Time conflict appointment id ${appointment.id} from ${appointment.start} to ${appointment.end}`,
+      );
+    }
+
+    await this.appointmentRepository
+      .createQueryBuilder()
+      .insert()
+      .into(Appointment)
+      .values([
+        {
+          id: data.id,
+          start: data.start,
+          end: data.end,
+          createdAt: new Date(Date.now()),
+          updatedAt: new Date(Date.now()),
+        },
+      ])
+      .orUpdate(['start', 'end', 'updatedAt'], ['id'])
+      .execute();
+    return true;
+  }
+
 }
